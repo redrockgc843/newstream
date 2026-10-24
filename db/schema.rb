@@ -10,14 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_22_164143) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_24_100448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "artist_spaces", force: :cascade do |t|
+    t.string "artist_name"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.string "social_media_url"
+    t.integer "status", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.string "website_url"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "artist_space_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["artist_space_id"], name: "index_memberships_on_artist_space_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
@@ -25,4 +48,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_22_164143) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "memberships", "artist_spaces"
+  add_foreign_key "memberships", "users"
 end
