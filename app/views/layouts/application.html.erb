@@ -24,8 +24,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    <% if user_signed_in? %>
+      <span>
+        Hallo, <%= current_user.first_name %> <%= current_user.last_name %>
+      </span>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= yield %>
   </body>
 </html>
