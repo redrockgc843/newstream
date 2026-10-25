@@ -1,5 +1,5 @@
 class ArtistSpace < ApplicationRecord
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
 
   validates :artist_name, presence: true
