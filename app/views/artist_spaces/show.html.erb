@@ -1,0 +1,9 @@
+<h2><%= @artist_space.artist_name %></h2>
+
+<%= link_to("Edit artist space", edit_artist_space_path(@artist_space)) %>
+<%= link_to("All Artist Spaces", artist_spaces_path) %>
+
+<%= button_to "Artist Space löschen",
+              artist_space_path(@artist_space),
+              method: :delete,
+              data: { turbo_confirm: "Möchtest du diesen Artist Space wirklich löschen?" } %>

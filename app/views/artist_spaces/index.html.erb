@@ -1,0 +1,7 @@
+<h2>All Artists</h2>
+
+<% @artist_spaces.each do |artist_space| %>
+  <p><%= link_to(artist_space.artist_name, artist_space_path(artist_space)) %></p>
+<% end %>
+
+<%= link_to("Create new Artist Space", new_artist_space_path) %>

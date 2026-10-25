@@ -1,0 +1,11 @@
+<h2>New Artist</h2>
+
+<%= simple_form_for @artist_space do |f| %>
+  <%= f.input :artist_name %>
+  <%= f.input :bio %>
+  <%= f.input :social_media_url %>
+  <%= f.input :website_url %>
+  <%= f.submit "Create artist" %>
+<% end %>
+
+<%= link_to("Go back to all artist spaces", artist_spaces_path) %>
