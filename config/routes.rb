@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  resource :dashboard, only: [:show, :edit, :update, :destroy]
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,5 +17,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :artist_spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :artist_spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resource :membership, only: [:create, :destroy]
+  end
+
+
 end
