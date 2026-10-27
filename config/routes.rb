@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resource :dashboard, only: [:show, :edit, :update, :destroy]
+  resource :dashboard, only: [:show]
 
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :artist_spaces, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resource :membership, only: [:create, :destroy]
+    resource :membership, only: [:create]
   end
 
 
