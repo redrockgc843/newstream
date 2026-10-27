@@ -1,6 +1,4 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!
-
   def show
     @user = current_user
     @artist_spaces = current_user.artist_spaces

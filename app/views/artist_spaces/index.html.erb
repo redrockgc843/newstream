@@ -4,7 +4,7 @@
   <p><%= link_to(artist_space.artist_name, artist_space_path(artist_space)) %></p>
 
   <% unless current_user.artist_spaces.exists?(artist_space.id) %>
-    <%= button_to "Zum Dashboard hinzufügen",
+    <%= button_to "Add to dashboard",
       artist_space_membership_path(artist_space), method: :post %>
   <% end %>
 <% end %>
